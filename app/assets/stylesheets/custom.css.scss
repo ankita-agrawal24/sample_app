@@ -1,4 +1,6 @@
 @import "bootstrap";
+$lightGray: #999;
+
 
 /* universal */
 
@@ -55,7 +57,7 @@ h2
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: $lightGray;
 }
 
 p 
@@ -67,27 +69,61 @@ p
 
 
 /* header  */
-#logo
+#logo 
 {
-  color: #fff;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 10px;
-  font-weight: bold,italic;
-  line-height: 2;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+
+  &:hover
+   {
+
+    color: #fff;
+    text-decoration: none;
+
+  }
 }
 
 
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+/* footer */
+
+footer 
+{
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $lightGray;
+  a 
+  {
+    color: #555;
+    
+    &:hover 
+    {
+      color: #222;
+    }
+
+  }
+
+  small
+  {
+    float: left;
+  }
+  ul 
+  {
+    float: right;
+    list-style: none;
+    li
+    {
+      float: left;
+      margin-left: 10px;
+    }
+  }
 }
-
-
-
-
 
 
