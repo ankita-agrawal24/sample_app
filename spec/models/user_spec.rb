@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe User do
   before do
-    @user = User.new(name: "Ankita Agrawal", email: "ankita@example.com", 
-                     password: "ankiita", password_confirmation: "ankita")
+    @user = User.new(name: "Example User", email: "user@example.com", 
+                     password: "foobar", password_confirmation: "foobar")
   end
 
   subject { @user }
@@ -13,6 +13,7 @@ describe User do
   it { should respond_to(:password_digest)}
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate)}
  # it { should be_valid }
 
@@ -88,7 +89,7 @@ describe User do
     end
 
     describe "return value of authenticate method" do
-  	     before { @user.save }
+  	     before {@user.save}
   	     let(:found_user) { User.find_by(email: @user.email) }
 
  	       describe "with valid password" do
@@ -101,5 +102,10 @@ describe User do
   	          it { should_not eq user_for_invalid_password }
     	       specify { expect(user_for_invalid_password).to be_false }
   	     end
+    end
+
+    describe "rememebr_token" do
+        before { @user.save }
+        its(:remember_token) { should_not be_blank }
     end
 end
