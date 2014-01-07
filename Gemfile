@@ -6,6 +6,11 @@ gem 'rails', '4.0.2'
 gem "bootstrap-sass", "2.3.2.0"
 gem 'therubyracer', require: "v8"
 gem 'bcrypt-ruby', '3.1.2'
+gem "rmagick"
+gem 'carrierwave'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

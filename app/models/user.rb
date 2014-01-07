@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 before_create :create_remember_token
 before_save { self.email = email.downcase }	
+   mount_uploader :image, ImageUploader
+   
    has_many :microposts
    validates :name, presence: true, length: { maximum: 50 }
    VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
