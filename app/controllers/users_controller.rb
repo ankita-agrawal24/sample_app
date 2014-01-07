@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -69,14 +70,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
     end
 
-    def signed_in_user
-        unless signed_in?
-            store_location
-            flash[:notice] = "Please sign in."
-            redirect_to signin_url
-        end
-        #redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
+  
 
     def correct_user
       @user = User.find(params[:id])
