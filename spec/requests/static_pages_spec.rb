@@ -28,7 +28,7 @@ describe "Static pages" do
     before {visit contact_path}
     it { should have_content('Contact') }
     it { should have_title(" | Contact") }
- end
+  end
 
   describe "for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
@@ -44,5 +44,16 @@ describe "Static pages" do
               expect(page).to have_selector("li##{item.id}", text: item.content)
           end
       end
-  end
+
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
+
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("1 followers", href: followers_user_path(user)) }
+      end
+    end
 end
